@@ -31,6 +31,20 @@
     .gold-border {
       border-color: #c5a059;
     }
+    .red-strikethrough {
+      position: relative;
+      display: inline-block;
+    }
+    .red-strikethrough::after {
+      content: '';
+      position: absolute;
+      left: -5%;
+      top: 50%;
+      width: 110%;
+      height: 2px;
+      background-color: #ef4444;
+      transform: translateY(-50%) rotate(-5deg);
+    }
   </style>
 </head>
 <body class="min-h-screen bg-[#0e0e0e] text-white selection:bg-[#c5a059] selection:text-black">
@@ -163,13 +177,14 @@
 
   <!-- ==================== SCHERMATA 3: DASHBOARD / ATELIER LIVE ==================== -->
   <section id="screen-dashboard" class="hidden min-h-screen bg-[#0d0d0d] flex-col">
-    <header class="border-b border-[#242424] px-6 py-4 flex flex-wrap justify-between items-center gap-4">
+    <header class="border-b border-[#242424] px-6 py-4 flex flex-wrap justify-between items-center gap-4 relative">
       <div class="font-serif-luxury tracking-[0.25em] text-xl font-bold text-white flex items-center gap-2">
         GOLDEN GOOSE ★
       </div>
 
       <nav class="hidden md:flex items-center space-x-6 text-xs uppercase tracking-widest text-neutral-400">
         <a href="#" class="text-[#c5a059] font-semibold border-b border-[#c5a059] pb-0.5">Home</a>
+        <a href="#blog-section" class="hover:text-white transition">Blog Dreamers</a>
         <a href="#" class="hover:text-white transition">Artisan Hub</a>
         <a href="#" class="hover:text-white transition">Community</a>
         <a href="#" class="hover:text-white transition">Sneaker Lab</a>
@@ -177,16 +192,54 @@
         <a href="#" class="hover:text-white transition">Support</a>
       </nav>
 
-      <button id="logout-btn" class="text-xs uppercase tracking-wider text-neutral-400 hover:text-red-400 transition">
-        Exit
-      </button>
+      <!-- Cart Icon & Exit Button -->
+      <div class="flex items-center gap-5">
+        <button id="cart-btn" class="relative text-neutral-300 hover:text-[#dfba73] transition flex items-center p-1.5 focus:outline-none">
+          <svg class="w-6 h-6 stroke-current" fill="none" stroke-width="1.6" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>
+          </svg>
+          <span id="cart-badge" class="absolute -top-1 -right-1 bg-[#c5a059] text-black text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center opacity-0 transition-transform duration-300 scale-0">0</span>
+        </button>
+
+        <button id="logout-btn" class="text-xs uppercase tracking-wider text-neutral-400 hover:text-red-400 transition">
+          Exit
+        </button>
+      </div>
+
+      <!-- Dropdown Carrello -->
+      <div id="cart-dropdown" class="hidden absolute top-16 right-6 w-84 sm:w-96 bg-[#161616] border border-[#3a352a] p-4 shadow-2xl z-50 rounded-sm">
+        <div class="flex justify-between items-center pb-2 border-b border-neutral-800 mb-3">
+          <span class="text-xs uppercase font-bold tracking-widest text-[#dfba73]">Shopping Bag</span>
+          <span id="cart-count-text" class="text-[11px] text-neutral-400">0 items</span>
+        </div>
+        
+        <div id="cart-items" class="py-4 text-center text-xs text-neutral-400">
+          Your bag is empty
+        </div>
+
+        <div id="cart-footer" class="hidden border-t border-neutral-800 pt-3 mt-2">
+          <div class="flex justify-between text-xs font-bold mb-3">
+            <span>Total:</span>
+            <span id="cart-total-price" class="text-[#dfba73]">€ 0.00</span>
+          </div>
+          <div class="flex gap-2">
+            <button id="clear-cart-btn" class="w-1/3 bg-neutral-900 hover:bg-neutral-800 text-neutral-400 hover:text-red-400 font-semibold uppercase tracking-wider py-2.5 text-[10px] border border-neutral-800 transition">
+              Empty
+            </button>
+            <button class="w-2/3 gold-gradient-bg text-black font-bold uppercase tracking-widest py-2.5 text-xs">
+              Checkout
+            </button>
+          </div>
+        </div>
+      </div>
     </header>
 
-    <main class="flex-1 max-w-7xl mx-auto w-full p-6 md:p-10 flex flex-col justify-center">
-      <h2 class="font-serif-luxury text-3xl md:text-4xl text-neutral-200 font-light tracking-wide mb-8">
+    <main class="flex-1 max-w-7xl mx-auto w-full p-6 md:p-10 flex flex-col justify-center space-y-12">
+      <h2 class="font-serif-luxury text-3xl md:text-4xl text-neutral-200 font-light tracking-wide">
         Welcome Martina
       </h2>
 
+      <!-- TOP SECTION: LIVE + EXCLUSIVE DROPS -->
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
         
         <!-- LEFT: ATELIER LIVE STREAMING (8 COLS) -->
@@ -237,18 +290,18 @@
               </h3>
             </div>
 
-            <!-- Immagine di Scarpa Golden Goose originale aggiornata -->
             <div class="w-full bg-[#181818] p-4 flex items-center justify-center mb-6 border border-neutral-800/60 overflow-hidden">
               <img 
                 src="sneaker.jpg" 
                 alt="Golden Goose Super-Star" 
                 class="w-full h-44 object-contain filter drop-shadow-md hover:scale-105 transition duration-300"
+                onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1552346154-21d32810aba3?auto=format&fit=crop&w=800&q=80';"
               />
             </div>
 
             <div class="text-center mb-6">
               <div id="countdown-timer" class="font-serif-luxury text-3xl md:text-4xl tracking-widest text-white font-medium">
-                23 : 13 : 50
+                23 : 13 : 19
               </div>
               <div class="flex justify-center gap-8 text-[10px] tracking-widest uppercase text-neutral-400 mt-1">
                 <span>Hours</span>
@@ -261,23 +314,148 @@
               Limited edition handcrafted distressed finish with the iconic dark hand-sewn star. Exclusive numbered series.
             </p>
 
-            <div class="text-center font-bold text-lg text-white mb-6">
-              € 595.00
+            <!-- Prezzo con 570€ sbarrato in rosso e 440€ in offerta -->
+            <div class="text-center mb-6 flex flex-col items-center justify-center gap-1">
+              <span class="red-strikethrough text-sm text-neutral-400 tracking-wider">
+                € 570.00
+              </span>
+              <span class="font-bold text-2xl text-white tracking-wide">
+                € 440.00
+              </span>
             </div>
           </div>
 
-          <button class="w-full gold-gradient-bg text-black font-bold uppercase tracking-[0.2em] py-3.5 text-xs md:text-sm hover:scale-[1.02] transition shadow-md">
+          <!-- Pulsante Reserve Cliccabile -->
+          <button id="reserve-btn" class="w-full gold-gradient-bg text-black font-bold uppercase tracking-[0.2em] py-3.5 text-xs md:text-sm hover:scale-[1.02] transition shadow-md active:scale-95">
             Reserve Now
           </button>
         </div>
 
       </div>
+
+      <!-- ==================== BLOG DREAMERS / REVIEWS ==================== -->
+      <section id="blog-section" class="bg-[#121212] border border-[#2d2820] p-6 md:p-8 shadow-xl mt-8">
+        <div class="flex flex-col md:flex-row md:items-center justify-between pb-4 border-b border-neutral-800 mb-6 gap-2">
+          <div>
+            <h3 class="font-serif-luxury text-xl md:text-2xl tracking-[0.18em] uppercase text-[#dfba73] font-bold">
+              BLOG DREAMERS ★ REVIEWS
+            </h3>
+            <p class="text-neutral-400 text-xs tracking-wider font-light mt-0.5">
+              Share your experience and read stories from our community.
+            </p>
+          </div>
+          <span class="text-xs uppercase tracking-widest text-neutral-500 font-semibold self-start md:self-auto">
+            Verified Dreamers
+          </span>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+          <!-- REVIEW FORM (5 COLUMNS) -->
+          <div class="lg:col-span-5 bg-[#171717] border border-[#2e2e2e] p-5 shadow-lg">
+            <h4 class="font-serif-luxury text-sm md:text-base uppercase tracking-wider text-white mb-4 flex items-center gap-2">
+              <span>✍️</span> Leave a Review
+            </h4>
+
+            <form id="review-form" class="space-y-4">
+              <div>
+                <label class="block text-[11px] uppercase tracking-wider text-neutral-400 mb-1">Your Name / Nickname</label>
+                <input 
+                  type="text" 
+                  id="rev-author" 
+                  required
+                  placeholder="e.g. Martina" 
+                  value="Martina"
+                  class="w-full bg-[#0d0d0d] border border-neutral-700 text-white text-xs px-3 py-2.5 focus:border-[#c5a059] outline-none"
+                />
+              </div>
+
+              <div>
+                <label class="block text-[11px] uppercase tracking-wider text-neutral-400 mb-1">Sneaker Model</label>
+                <input 
+                  type="text" 
+                  id="rev-model" 
+                  required
+                  placeholder="e.g. Super-Star Distressed Glitter" 
+                  value="Super-Star Limited Edition"
+                  class="w-full bg-[#0d0d0d] border border-neutral-700 text-white text-xs px-3 py-2.5 focus:border-[#c5a059] outline-none"
+                />
+              </div>
+
+              <div>
+                <label class="block text-[11px] uppercase tracking-wider text-neutral-400 mb-1">Rating</label>
+                <div class="flex items-center gap-1.5 text-lg cursor-pointer" id="star-rating">
+                  <span class="star text-[#dfba73]" data-val="1">★</span>
+                  <span class="star text-[#dfba73]" data-val="2">★</span>
+                  <span class="star text-[#dfba73]" data-val="3">★</span>
+                  <span class="star text-[#dfba73]" data-val="4">★</span>
+                  <span class="star text-[#dfba73]" data-val="5">★</span>
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-[11px] uppercase tracking-wider text-neutral-400 mb-1">Your Experience</label>
+                <textarea 
+                  id="rev-text" 
+                  rows="3" 
+                  required
+                  placeholder="Share unique details about the craft, leather finish, or repair atelier..."
+                  class="w-full bg-[#0d0d0d] border border-neutral-700 text-white text-xs px-3 py-2.5 focus:border-[#c5a059] outline-none resize-none"
+                ></textarea>
+              </div>
+
+              <button 
+                type="submit" 
+                class="w-full gold-gradient-bg text-black font-bold uppercase tracking-[0.2em] py-3 text-xs shadow hover:scale-[1.01] transition">
+                Submit Review
+              </button>
+            </form>
+          </div>
+
+          <!-- REVIEWS FEED (7 COLUMNS) -->
+          <div class="lg:col-span-7 flex flex-col justify-between">
+            <div id="reviews-feed" class="space-y-4 max-h-[460px] overflow-y-auto pr-2">
+              <!-- Example Review 1 -->
+              <div class="bg-[#171717] border border-[#2e2e2e] p-4 text-xs">
+                <div class="flex justify-between items-start mb-2">
+                  <div>
+                    <span class="font-bold text-white tracking-wide">Federica R.</span>
+                    <span class="text-[10px] text-neutral-500 ml-2">Ball Star Collection</span>
+                  </div>
+                  <span class="text-[#dfba73] tracking-wider text-sm">★★★★★</span>
+                </div>
+                <p class="text-neutral-300 font-light leading-relaxed">
+                  "Flawless handmade craftsmanship. The distressed finish shows obsessive attention to detail and true Venetian heritage. Entering the Dreamers Room truly makes you feel part of the brand family!"
+                </p>
+                <div class="text-[10px] text-neutral-500 mt-2">2 hours ago • Verified Dreamer</div>
+              </div>
+
+              <!-- Example Review 2 -->
+              <div class="bg-[#171717] border border-[#2e2e2e] p-4 text-xs">
+                <div class="flex justify-between items-start mb-2">
+                  <div>
+                    <span class="font-bold text-white tracking-wide">Marco V.</span>
+                    <span class="text-[10px] text-neutral-500 ml-2">Forward Lab Repair</span>
+                  </div>
+                  <span class="text-[#dfba73] tracking-wider text-sm">★★★★★</span>
+                </div>
+                <p class="text-neutral-300 font-light leading-relaxed">
+                  "I watched the atelier live stream while they restored the insole and welted sole. The master cobblers work at such an extraordinary level, truly a unique experience."
+                </p>
+                <div class="text-[10px] text-neutral-500 mt-2">Yesterday • Verified Dreamer</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
     </main>
   </section>
 
   <!-- ==================== JAVASCRIPT ==================== -->
   <script>
     const VALID_CODE = "G2026F12";
+    const ORIGINAL_PRICE = 570.00;
+    const DISCOUNT_PRICE = 440.00;
 
     const screenGate = document.getElementById('screen-gate');
     const screenGuide = document.getElementById('screen-guide');
@@ -293,6 +471,19 @@
 
     const liveVideo = document.getElementById('live-video');
     const toggleAudioBtn = document.getElementById('toggle-audio-btn');
+
+    // Elementi Carrello
+    const reserveBtn = document.getElementById('reserve-btn');
+    const cartBtn = document.getElementById('cart-btn');
+    const cartBadge = document.getElementById('cart-badge');
+    const cartDropdown = document.getElementById('cart-dropdown');
+    const cartItems = document.getElementById('cart-items');
+    const cartFooter = document.getElementById('cart-footer');
+    const cartCountText = document.getElementById('cart-count-text');
+    const cartTotalPrice = document.getElementById('cart-total-price');
+    const clearCartBtn = document.getElementById('clear-cart-btn');
+
+    let cartCount = 0;
 
     function showScreen(screen) {
       screenGate.classList.add('hidden');
@@ -342,8 +533,116 @@
       }
     });
 
-    // Avvio countdown specifico da 23:13:50
-    let totalSeconds = (23 * 3600) + (13 * 60) + 50;
+    // Aggiornamento Carrello con prezzo scontato a 440€
+    function updateCartUI() {
+      if (cartCount > 0) {
+        cartBadge.textContent = cartCount;
+        cartBadge.classList.remove('opacity-0', 'scale-0');
+        cartBadge.classList.add('opacity-100', 'scale-100');
+
+        reserveBtn.textContent = 'Reserved in Bag (' + cartCount + ')';
+        reserveBtn.classList.remove('gold-gradient-bg', 'text-black');
+        reserveBtn.classList.add('bg-neutral-800', 'text-[#c5a059]', 'border', 'border-[#c5a059]');
+
+        cartCountText.textContent = `${cartCount} item(s)`;
+        cartTotalPrice.textContent = `€ ${(DISCOUNT_PRICE * cartCount).toFixed(2)}`;
+        cartFooter.classList.remove('hidden');
+
+        cartItems.innerHTML = `
+          <div class="flex items-center justify-between gap-3 text-left bg-black/40 p-2.5 border border-neutral-800">
+            <div class="w-12 h-12 bg-black p-1 border border-neutral-700 flex items-center justify-center flex-shrink-0">
+              <img src="sneaker.jpg" class="w-full h-full object-contain" onerror="this.src='https://images.unsplash.com/photo-1552346154-21d32810aba3?auto=format&fit=crop&w=800&q=80';" />
+            </div>
+            <div class="flex-1 min-w-0">
+              <h4 class="font-bold text-xs text-white truncate">Super-Star Limited</h4>
+              <div class="flex items-center gap-1.5">
+                <span class="text-[10px] text-neutral-500 line-through">€ ${ORIGINAL_PRICE.toFixed(2)}</span>
+                <span class="text-[11px] text-[#dfba73] font-bold">€ ${DISCOUNT_PRICE.toFixed(2)}</span>
+              </div>
+            </div>
+            
+            <div class="flex items-center gap-1.5 bg-[#1f1f1f] border border-neutral-700 px-1 py-0.5 rounded">
+              <button id="btn-decrease" class="text-neutral-400 hover:text-white px-1.5 py-0.5 text-xs font-bold hover:bg-neutral-700 transition" title="Decrease">&minus;</button>
+              <span class="text-xs font-bold text-white px-1">${cartCount}</span>
+              <button id="btn-increase" class="text-neutral-400 hover:text-white px-1.5 py-0.5 text-xs font-bold hover:bg-neutral-700 transition" title="Increase">&plus;</button>
+            </div>
+
+            <button id="btn-remove-item" class="text-neutral-500 hover:text-red-400 p-1 transition" title="Remove from bag">
+              <svg class="w-4 h-4 stroke-current" fill="none" viewBox="0 0 24 24" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+              </svg>
+            </button>
+          </div>
+        `;
+
+        document.getElementById('btn-decrease').addEventListener('click', (e) => {
+          e.stopPropagation();
+          if (cartCount > 1) {
+            cartCount--;
+            updateCartUI();
+          } else {
+            emptyCart();
+          }
+        });
+
+        document.getElementById('btn-increase').addEventListener('click', (e) => {
+          e.stopPropagation();
+          cartCount++;
+          updateCartUI();
+        });
+
+        document.getElementById('btn-remove-item').addEventListener('click', (e) => {
+          e.stopPropagation();
+          emptyCart();
+        });
+
+      } else {
+        emptyCart();
+      }
+    }
+
+    function emptyCart() {
+      cartCount = 0;
+      cartBadge.textContent = '0';
+      cartBadge.classList.remove('opacity-100', 'scale-100');
+      cartBadge.classList.add('opacity-0', 'scale-0');
+
+      reserveBtn.textContent = 'Reserve Now';
+      reserveBtn.classList.remove('bg-neutral-800', 'text-[#c5a059]', 'border', 'border-[#c5a059]');
+      reserveBtn.classList.add('gold-gradient-bg', 'text-black');
+
+      cartCountText.textContent = '0 items';
+      cartItems.innerHTML = 'Your bag is empty';
+      cartFooter.classList.add('hidden');
+    }
+
+    reserveBtn.addEventListener('click', () => {
+      cartCount++;
+      updateCartUI();
+
+      cartDropdown.classList.remove('hidden');
+      setTimeout(() => {
+        cartDropdown.classList.add('hidden');
+      }, 3000);
+    });
+
+    cartBtn.addEventListener('click', () => {
+      cartDropdown.classList.toggle('hidden');
+    });
+
+    clearCartBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      emptyCart();
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!cartBtn.contains(e.target) && !cartDropdown.contains(e.target) && !reserveBtn.contains(e.target)) {
+        cartDropdown.classList.add('hidden');
+      }
+    });
+
+    // Countdown Timer (23:13:19)
+    let totalSeconds = (23 * 3600) + (13 * 60) + 19;
     const timerDisplay = document.getElementById('countdown-timer');
 
     setInterval(() => {
@@ -355,6 +654,60 @@
         timerDisplay.textContent = `${hours} : ${minutes} : ${seconds}`;
       }
     }, 1000);
+
+    // ==================== BLOG DREAMERS / REVIEWS MANAGEMENT ====================
+    let selectedRating = 5;
+    const starContainer = document.getElementById('star-rating');
+    const stars = starContainer.querySelectorAll('.star');
+
+    stars.forEach(star => {
+      star.addEventListener('click', () => {
+        selectedRating = parseInt(star.getAttribute('data-val'));
+        stars.forEach(s => {
+          const val = parseInt(s.getAttribute('data-val'));
+          if (val <= selectedRating) {
+            s.classList.add('text-[#dfba73]');
+            s.classList.remove('text-neutral-600');
+          } else {
+            s.classList.remove('text-[#dfba73]');
+            s.classList.add('text-neutral-600');
+          }
+        });
+      });
+    });
+
+    const reviewForm = document.getElementById('review-form');
+    const reviewsFeed = document.getElementById('reviews-feed');
+
+    reviewForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const author = document.getElementById('rev-author').value.trim();
+      const model = document.getElementById('rev-model').value.trim();
+      const text = document.getElementById('rev-text').value.trim();
+
+      if (!author || !text) return;
+
+      const starIcons = '★'.repeat(selectedRating) + '☆'.repeat(5 - selectedRating);
+
+      const newCard = document.createElement('div');
+      newCard.className = 'bg-[#171717] border border-[#c5a059]/40 p-4 text-xs transition duration-300';
+      newCard.innerHTML = `
+        <div class="flex justify-between items-start mb-2">
+          <div>
+            <span class="font-bold text-white tracking-wide">${author}</span>
+            <span class="text-[10px] text-neutral-400 ml-2">${model}</span>
+          </div>
+          <span class="text-[#dfba73] tracking-wider text-sm">${starIcons}</span>
+        </div>
+        <p class="text-neutral-300 font-light leading-relaxed">
+          "${text}"
+        </p>
+        <div class="text-[10px] text-[#dfba73] mt-2">Just now • Verified Dreamer ★</div>
+      `;
+
+      reviewsFeed.prepend(newCard);
+      document.getElementById('rev-text').value = '';
+    });
   </script>
 </body>
 </html>
