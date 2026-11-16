@@ -12,10 +12,13 @@
     body {
       font-family: 'Montserrat', sans-serif;
       background-color: #0b0b0b;
-      color: #fff;
+      color: #ffffff;
     }
     .font-serif-luxury {
       font-family: 'Bodoni Moda', serif;
+    }
+    .font-sans-clean {
+      font-family: 'Montserrat', sans-serif;
     }
     .gold-gradient-bg {
       background: linear-gradient(135deg, #dfba73 0%, #c5a059 50%, #9e7a33 100%);
@@ -47,12 +50,12 @@
     }
   </style>
 </head>
-<body class="min-h-screen bg-[#0e0e0e] text-white selection:bg-[#c5a059] selection:text-black">
+<body class="min-h-screen bg-[#0e0e0e] text-white font-sans-clean selection:bg-[#c5a059] selection:text-black">
 
   <!-- ==================== SCHERMATA 1: LOGIN GATE ==================== -->
   <section id="screen-gate" class="relative min-h-screen flex flex-col justify-between items-center p-6 bg-cover bg-center" style="background-image: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.65)), url('https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=2000&q=80');">
     <header class="w-full flex justify-center pt-4">
-      <h1 class="font-serif-luxury tracking-[0.25em] text-2xl md:text-3xl font-semibold text-white/90 drop-shadow flex items-center gap-2">
+      <h1 class="font-serif-luxury tracking-[0.25em] text-2xl md:text-3xl font-bold gold-gradient-text drop-shadow flex items-center gap-2">
         GOLDEN GOOSE <span class="text-xl">★</span>
       </h1>
     </header>
@@ -63,7 +66,7 @@
           Enter The Dreamers Room
         </h2>
 
-        <p class="text-xs md:text-sm tracking-widest text-[#d8d8d8] font-medium uppercase mb-4">
+        <p class="font-sans-clean text-xs md:text-sm tracking-widest text-white font-medium uppercase mb-4">
           Insert your unique sneaker code or scan your pass
         </p>
 
@@ -72,22 +75,22 @@
             type="text" 
             id="code-input" 
             placeholder="e.g. G2026F12" 
-            class="w-full bg-white text-black font-semibold text-center py-3.5 px-4 tracking-widest uppercase outline-none focus:ring-2 focus:ring-[#c5a059] text-base md:text-lg"
+            class="w-full bg-white text-black font-sans-clean font-semibold text-center py-3.5 px-4 tracking-widest uppercase outline-none border-2 border-transparent focus:ring-2 focus:ring-[#c5a059] text-base md:text-lg transition"
             autocomplete="off"
           />
 
-          <p id="error-msg" class="text-red-400 text-xs hidden font-medium tracking-wide">
-            Invalid Code. Please verify your sneaker code and try again.
+          <p id="error-msg" class="text-red-400 font-sans-clean text-xs hidden font-semibold tracking-wide bg-red-950/50 border border-red-500/40 py-2 px-3">
+            Codice non valido, riprova.
           </p>
 
           <button 
             type="submit" 
-            class="w-full gold-gradient-bg text-black font-bold uppercase tracking-[0.2em] py-3.5 text-sm md:text-base shadow-md transition duration-200">
+            class="w-full gold-gradient-bg text-black font-sans-clean font-bold uppercase tracking-[0.2em] py-3.5 text-sm md:text-base shadow-md transition duration-200">
             Register
           </button>
         </form>
 
-        <div class="mt-6 text-xs text-gray-400 tracking-wide">
+        <div class="mt-6 font-sans-clean text-xs text-white/80 tracking-wide">
           No code? 
           <button id="go-to-guide" class="text-white underline underline-offset-4 hover:text-[#dfba73] ml-1 font-medium transition">
             Discover how to become a Dreamer
@@ -96,7 +99,7 @@
       </div>
     </main>
 
-    <footer class="text-neutral-500 text-[10px] tracking-widest uppercase pb-2">
+    <footer class="text-white/60 font-sans-clean text-[10px] tracking-widest uppercase pb-2">
       Protected Access &copy; Golden Goose
     </footer>
   </section>
@@ -104,10 +107,10 @@
   <!-- ==================== SCHERMATA 2: ONBOARDING / HOW TO BECOME A DREAMER ==================== -->
   <section id="screen-guide" class="hidden min-h-screen flex-col justify-between items-center p-6 md:p-12 bg-gradient-to-b from-[#111111] via-[#090909] to-black">
     <header class="w-full max-w-6xl flex justify-between items-center pb-8 border-b border-neutral-800">
-      <div class="font-serif-luxury tracking-[0.25em] text-xl font-semibold">
+      <div class="font-serif-luxury tracking-[0.25em] text-xl font-bold gold-gradient-text">
         GOLDEN GOOSE ★
       </div>
-      <button id="guide-back-btn" class="text-xs uppercase tracking-widest text-neutral-400 hover:text-white transition">
+      <button id="guide-back-btn" class="font-sans-clean text-xs uppercase tracking-widest text-white/80 hover:text-white transition">
         &larr; Back to login
       </button>
     </header>
@@ -117,7 +120,7 @@
         How to Become a Dreamer
       </h2>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-6 w-full mb-14">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-6 w-full mb-14 font-sans-clean">
         <!-- Step 1 -->
         <div class="flex flex-col items-center text-center">
           <div class="w-36 h-36 md:w-40 md:h-40 rounded-full border-2 border-[#c5a059] flex items-center justify-center p-4 bg-[#141414] shadow-lg shadow-black/60 mb-5">
@@ -126,8 +129,8 @@
               <path stroke-linecap="round" stroke-linejoin="round" d="M9 14l2 2 4-4"/>
             </svg>
           </div>
-          <h3 class="font-bold text-sm tracking-wider uppercase mb-1">1. Purchase</h3>
-          <p class="text-xs text-neutral-400 font-light">a pair of sneakers</p>
+          <h3 class="font-bold text-sm tracking-wider uppercase text-white mb-1">1. Purchase</h3>
+          <p class="text-xs text-white/80 font-light">a pair of sneakers</p>
         </div>
 
         <!-- Step 2 -->
@@ -137,8 +140,8 @@
               <path stroke-linecap="round" stroke-linejoin="round" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/>
             </svg>
           </div>
-          <h3 class="font-bold text-sm tracking-wider uppercase mb-1">2. Find</h3>
-          <p class="text-xs text-neutral-400 font-light">the insole code</p>
+          <h3 class="font-bold text-sm tracking-wider uppercase text-white mb-1">2. Find</h3>
+          <p class="text-xs text-white/80 font-light">the insole code</p>
         </div>
 
         <!-- Step 3 -->
@@ -149,8 +152,8 @@
               <path stroke-linecap="round" stroke-linejoin="round" d="M9 7h2m2 0h2M9 10h6M9 13h4M12 18h.01"/>
             </svg>
           </div>
-          <h3 class="font-bold text-sm tracking-wider uppercase mb-1">3. Scan</h3>
-          <p class="text-xs text-neutral-400 font-light">code with your smartphone</p>
+          <h3 class="font-bold text-sm tracking-wider uppercase text-white mb-1">3. Scan</h3>
+          <p class="text-xs text-white/80 font-light">code with your smartphone</p>
         </div>
 
         <!-- Step 4 -->
@@ -160,17 +163,17 @@
               <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
             </svg>
           </div>
-          <h3 class="font-bold text-sm tracking-wider uppercase mb-1">4. Join</h3>
-          <p class="text-xs text-neutral-400 font-light">the community</p>
+          <h3 class="font-bold text-sm tracking-wider uppercase text-white mb-1">4. Join</h3>
+          <p class="text-xs text-white/80 font-light">the community</p>
         </div>
       </div>
 
-      <button id="guide-register-btn" class="gold-gradient-bg text-black font-bold uppercase tracking-[0.25em] py-4 px-14 text-sm md:text-base shadow-xl hover:scale-105 transition duration-200">
+      <button id="guide-register-btn" class="gold-gradient-bg text-black font-sans-clean font-bold uppercase tracking-[0.25em] py-4 px-14 text-sm md:text-base shadow-xl hover:scale-105 transition duration-200">
         Register
       </button>
     </main>
 
-    <footer class="text-neutral-500 text-[10px] tracking-widest uppercase">
+    <footer class="text-white/60 font-sans-clean text-[10px] tracking-widest uppercase">
       Golden Goose Dreamers Club
     </footer>
   </section>
@@ -178,11 +181,11 @@
   <!-- ==================== SCHERMATA 3: DASHBOARD / ATELIER LIVE ==================== -->
   <section id="screen-dashboard" class="hidden min-h-screen bg-[#0d0d0d] flex-col">
     <header class="border-b border-[#242424] px-6 py-4 flex flex-wrap justify-between items-center gap-4 relative">
-      <div class="font-serif-luxury tracking-[0.25em] text-xl font-bold text-white flex items-center gap-2">
+      <div class="font-serif-luxury tracking-[0.25em] text-xl font-bold gold-gradient-text flex items-center gap-2">
         GOLDEN GOOSE ★
       </div>
 
-      <nav class="hidden md:flex items-center space-x-6 text-xs uppercase tracking-widest text-neutral-400">
+      <nav class="hidden md:flex items-center space-x-6 font-sans-clean text-xs uppercase tracking-widest text-white/80">
         <a href="#" class="text-[#c5a059] font-semibold border-b border-[#c5a059] pb-0.5">Home</a>
         <a href="#blog-section" class="hover:text-white transition">Blog Dreamers</a>
         <a href="#" class="hover:text-white transition">Artisan Hub</a>
@@ -193,37 +196,37 @@
       </nav>
 
       <!-- Cart Icon & Exit Button -->
-      <div class="flex items-center gap-5">
-        <button id="cart-btn" class="relative text-neutral-300 hover:text-[#dfba73] transition flex items-center p-1.5 focus:outline-none">
+      <div class="flex items-center gap-5 font-sans-clean">
+        <button id="cart-btn" class="relative text-white hover:text-[#dfba73] transition flex items-center p-1.5 focus:outline-none">
           <svg class="w-6 h-6 stroke-current" fill="none" stroke-width="1.6" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>
           </svg>
           <span id="cart-badge" class="absolute -top-1 -right-1 bg-[#c5a059] text-black text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center opacity-0 transition-transform duration-300 scale-0">0</span>
         </button>
 
-        <button id="logout-btn" class="text-xs uppercase tracking-wider text-neutral-400 hover:text-red-400 transition">
+        <button id="logout-btn" class="text-xs uppercase tracking-wider text-white/80 hover:text-red-400 transition">
           Exit
         </button>
       </div>
 
       <!-- Dropdown Carrello -->
-      <div id="cart-dropdown" class="hidden absolute top-16 right-6 w-84 sm:w-96 bg-[#161616] border border-[#3a352a] p-4 shadow-2xl z-50 rounded-sm">
+      <div id="cart-dropdown" class="hidden absolute top-16 right-6 w-84 sm:w-96 bg-[#161616] border border-[#3a352a] p-4 shadow-2xl z-50 rounded-sm font-sans-clean">
         <div class="flex justify-between items-center pb-2 border-b border-neutral-800 mb-3">
           <span class="text-xs uppercase font-bold tracking-widest text-[#dfba73]">Shopping Bag</span>
-          <span id="cart-count-text" class="text-[11px] text-neutral-400">0 items</span>
+          <span id="cart-count-text" class="text-[11px] text-white/70">0 items</span>
         </div>
         
-        <div id="cart-items" class="py-4 text-center text-xs text-neutral-400">
+        <div id="cart-items" class="py-4 text-center text-xs text-white/80">
           Your bag is empty
         </div>
 
         <div id="cart-footer" class="hidden border-t border-neutral-800 pt-3 mt-2">
-          <div class="flex justify-between text-xs font-bold mb-3">
+          <div class="flex justify-between text-xs font-bold text-white mb-3">
             <span>Total:</span>
             <span id="cart-total-price" class="text-[#dfba73]">€ 0.00</span>
           </div>
           <div class="flex gap-2">
-            <button id="clear-cart-btn" class="w-1/3 bg-neutral-900 hover:bg-neutral-800 text-neutral-400 hover:text-red-400 font-semibold uppercase tracking-wider py-2.5 text-[10px] border border-neutral-800 transition">
+            <button id="clear-cart-btn" class="w-1/3 bg-neutral-900 hover:bg-neutral-800 text-white/70 hover:text-red-400 font-semibold uppercase tracking-wider py-2.5 text-[10px] border border-neutral-800 transition">
               Empty
             </button>
             <button class="w-2/3 gold-gradient-bg text-black font-bold uppercase tracking-widest py-2.5 text-xs">
@@ -235,7 +238,8 @@
     </header>
 
     <main class="flex-1 max-w-7xl mx-auto w-full p-6 md:p-10 flex flex-col justify-center space-y-12">
-      <h2 class="font-serif-luxury text-3xl md:text-4xl text-neutral-200 font-light tracking-wide">
+      <!-- Titolo principale con font Serif dorato -->
+      <h2 class="font-serif-luxury text-3xl md:text-5xl gold-gradient-text font-bold tracking-wide">
         Welcome Martina
       </h2>
 
@@ -245,10 +249,10 @@
         <!-- LEFT: ATELIER LIVE STREAMING (8 COLS) -->
         <div class="lg:col-span-8 bg-[#121212] border border-[#2d2820] p-4 md:p-6 shadow-xl">
           <div class="flex justify-between items-center pb-3 border-b border-neutral-800 mb-4">
-            <h3 class="font-serif-luxury tracking-[0.2em] text-base md:text-lg uppercase text-[#dfba73]">
+            <h3 class="font-serif-luxury tracking-[0.2em] text-lg md:text-xl uppercase gold-gradient-text font-bold">
               Atelier Live
             </h3>
-            <span class="text-[11px] tracking-widest uppercase text-neutral-400 flex items-center gap-1.5">
+            <span class="font-sans-clean text-[11px] tracking-widest uppercase text-white flex items-center gap-1.5">
               <span class="text-base">&#x1F4F9;</span> Streaming Now
             </span>
           </div>
@@ -268,13 +272,13 @@
               Your browser does not support the video tag.
             </video>
 
-            <div class="absolute top-4 left-4 bg-black/60 backdrop-blur-md px-3 py-1 text-[11px] uppercase tracking-widest text-red-500 font-bold flex items-center gap-2 border border-red-500/40">
+            <div class="absolute top-4 left-4 bg-black/60 backdrop-blur-md px-3 py-1 font-sans-clean text-[11px] uppercase tracking-widest text-red-500 font-bold flex items-center gap-2 border border-red-500/40">
               <span class="w-2 h-2 rounded-full bg-red-500 animate-ping"></span>
               Live
             </div>
 
             <div class="absolute bottom-4 right-4 flex gap-2">
-              <button id="toggle-audio-btn" class="bg-black/70 hover:bg-black text-white text-xs px-3 py-1.5 tracking-wider uppercase border border-neutral-700 transition">
+              <button id="toggle-audio-btn" class="bg-black/70 hover:bg-black text-white font-sans-clean text-xs px-3 py-1.5 tracking-wider uppercase border border-neutral-700 transition">
                 Unmute 🔊
               </button>
             </div>
@@ -285,7 +289,7 @@
         <div class="lg:col-span-4 bg-[#121212] border border-[#2d2820] p-4 md:p-6 shadow-xl flex flex-col justify-between h-full">
           <div>
             <div class="pb-3 border-b border-neutral-800 mb-6">
-              <h3 class="font-serif-luxury tracking-[0.2em] text-base md:text-lg uppercase text-[#dfba73]">
+              <h3 class="font-serif-luxury tracking-[0.2em] text-lg md:text-xl uppercase gold-gradient-text font-bold">
                 Exclusive Drops
               </h3>
             </div>
@@ -299,24 +303,25 @@
               />
             </div>
 
-            <div class="text-center mb-6">
-              <div id="countdown-timer" class="font-serif-luxury text-3xl md:text-4xl tracking-widest text-white font-medium">
+            <!-- Conto alla rovescia con font Sans-serif bianco e pulito -->
+            <div class="text-center mb-6 font-sans-clean">
+              <div id="countdown-timer" class="text-3xl md:text-4xl tracking-widest text-white font-semibold tabular-nums">
                 23 : 13 : 19
               </div>
-              <div class="flex justify-center gap-8 text-[10px] tracking-widest uppercase text-neutral-400 mt-1">
+              <div class="flex justify-center gap-8 text-[10px] tracking-widest uppercase text-white/80 mt-1.5 font-medium">
                 <span>Hours</span>
                 <span>Minutes</span>
                 <span>Seconds</span>
               </div>
             </div>
 
-            <p class="text-neutral-400 text-xs leading-relaxed text-center mb-4 font-light">
+            <p class="font-sans-clean text-white/85 text-xs leading-relaxed text-center mb-4 font-light">
               Limited edition handcrafted distressed finish with the iconic dark hand-sewn star. Exclusive numbered series.
             </p>
 
             <!-- Prezzo con 570€ sbarrato in rosso e 440€ in offerta -->
-            <div class="text-center mb-6 flex flex-col items-center justify-center gap-1">
-              <span class="red-strikethrough text-sm text-neutral-400 tracking-wider">
+            <div class="text-center mb-6 flex flex-col items-center justify-center gap-1 font-sans-clean">
+              <span class="red-strikethrough text-sm text-white/60 tracking-wider">
                 € 570.00
               </span>
               <span class="font-bold text-2xl text-white tracking-wide">
@@ -326,7 +331,7 @@
           </div>
 
           <!-- Pulsante Reserve Cliccabile -->
-          <button id="reserve-btn" class="w-full gold-gradient-bg text-black font-bold uppercase tracking-[0.2em] py-3.5 text-xs md:text-sm hover:scale-[1.02] transition shadow-md active:scale-95">
+          <button id="reserve-btn" class="w-full gold-gradient-bg text-black font-sans-clean font-bold uppercase tracking-[0.2em] py-3.5 text-xs md:text-sm hover:scale-[1.02] transition shadow-md active:scale-95">
             Reserve Now
           </button>
         </div>
@@ -337,28 +342,28 @@
       <section id="blog-section" class="bg-[#121212] border border-[#2d2820] p-6 md:p-8 shadow-xl mt-8">
         <div class="flex flex-col md:flex-row md:items-center justify-between pb-4 border-b border-neutral-800 mb-6 gap-2">
           <div>
-            <h3 class="font-serif-luxury text-xl md:text-2xl tracking-[0.18em] uppercase text-[#dfba73] font-bold">
+            <h3 class="font-serif-luxury text-xl md:text-2xl tracking-[0.18em] uppercase gold-gradient-text font-bold">
               BLOG DREAMERS ★ REVIEWS
             </h3>
-            <p class="text-neutral-400 text-xs tracking-wider font-light mt-0.5">
+            <p class="font-sans-clean text-white/80 text-xs tracking-wider font-light mt-0.5">
               Share your experience and read stories from our community.
             </p>
           </div>
-          <span class="text-xs uppercase tracking-widest text-neutral-500 font-semibold self-start md:self-auto">
+          <span class="font-sans-clean text-xs uppercase tracking-widest text-white/60 font-semibold self-start md:self-auto">
             Verified Dreamers
           </span>
         </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 font-sans-clean">
           <!-- REVIEW FORM (5 COLUMNS) -->
           <div class="lg:col-span-5 bg-[#171717] border border-[#2e2e2e] p-5 shadow-lg">
-            <h4 class="font-serif-luxury text-sm md:text-base uppercase tracking-wider text-white mb-4 flex items-center gap-2">
+            <h4 class="font-serif-luxury text-base md:text-lg uppercase tracking-wider gold-gradient-text font-bold mb-4 flex items-center gap-2">
               <span>✍️</span> Leave a Review
             </h4>
 
             <form id="review-form" class="space-y-4">
               <div>
-                <label class="block text-[11px] uppercase tracking-wider text-neutral-400 mb-1">Your Name / Nickname</label>
+                <label class="block text-[11px] uppercase tracking-wider text-white/80 mb-1">Your Name / Nickname</label>
                 <input 
                   type="text" 
                   id="rev-author" 
@@ -370,7 +375,7 @@
               </div>
 
               <div>
-                <label class="block text-[11px] uppercase tracking-wider text-neutral-400 mb-1">Sneaker Model</label>
+                <label class="block text-[11px] uppercase tracking-wider text-white/80 mb-1">Sneaker Model</label>
                 <input 
                   type="text" 
                   id="rev-model" 
@@ -382,7 +387,7 @@
               </div>
 
               <div>
-                <label class="block text-[11px] uppercase tracking-wider text-neutral-400 mb-1">Rating</label>
+                <label class="block text-[11px] uppercase tracking-wider text-white/80 mb-1">Rating</label>
                 <div class="flex items-center gap-1.5 text-lg cursor-pointer" id="star-rating">
                   <span class="star text-[#dfba73]" data-val="1">★</span>
                   <span class="star text-[#dfba73]" data-val="2">★</span>
@@ -393,7 +398,7 @@
               </div>
 
               <div>
-                <label class="block text-[11px] uppercase tracking-wider text-neutral-400 mb-1">Your Experience</label>
+                <label class="block text-[11px] uppercase tracking-wider text-white/80 mb-1">Your Experience</label>
                 <textarea 
                   id="rev-text" 
                   rows="3" 
@@ -419,14 +424,14 @@
                 <div class="flex justify-between items-start mb-2">
                   <div>
                     <span class="font-bold text-white tracking-wide">Federica R.</span>
-                    <span class="text-[10px] text-neutral-500 ml-2">Ball Star Collection</span>
+                    <span class="text-[10px] text-white/60 ml-2">Ball Star Collection</span>
                   </div>
                   <span class="text-[#dfba73] tracking-wider text-sm">★★★★★</span>
                 </div>
-                <p class="text-neutral-300 font-light leading-relaxed">
+                <p class="text-white/90 font-light leading-relaxed">
                   "Flawless handmade craftsmanship. The distressed finish shows obsessive attention to detail and true Venetian heritage. Entering the Dreamers Room truly makes you feel part of the brand family!"
                 </p>
-                <div class="text-[10px] text-neutral-500 mt-2">2 hours ago • Verified Dreamer</div>
+                <div class="text-[10px] text-white/50 mt-2">2 hours ago • Verified Dreamer</div>
               </div>
 
               <!-- Example Review 2 -->
@@ -434,14 +439,14 @@
                 <div class="flex justify-between items-start mb-2">
                   <div>
                     <span class="font-bold text-white tracking-wide">Marco V.</span>
-                    <span class="text-[10px] text-neutral-500 ml-2">Forward Lab Repair</span>
+                    <span class="text-[10px] text-white/60 ml-2">Forward Lab Repair</span>
                   </div>
                   <span class="text-[#dfba73] tracking-wider text-sm">★★★★★</span>
                 </div>
-                <p class="text-neutral-300 font-light leading-relaxed">
+                <p class="text-white/90 font-light leading-relaxed">
                   "I watched the atelier live stream while they restored the insole and welted sole. The master cobblers work at such an extraordinary level, truly a unique experience."
                 </p>
-                <div class="text-[10px] text-neutral-500 mt-2">Yesterday • Verified Dreamer</div>
+                <div class="text-[10px] text-white/50 mt-2">Yesterday • Verified Dreamer</div>
               </div>
             </div>
           </div>
@@ -499,16 +504,28 @@
       }
     }
 
+    // Controllo e validazione del codice inserito
     loginForm.addEventListener('submit', (e) => {
       e.preventDefault();
       const enteredCode = codeInput.value.trim().toUpperCase();
 
-      if (enteredCode === VALID_CODE) {
+      if (enteredCode !== "" && enteredCode === VALID_CODE) {
         errorMsg.classList.add('hidden');
+        codeInput.classList.remove('border-red-500');
         showScreen(screenDashboard);
       } else {
+        errorMsg.textContent = "Codice non valido, riprova.";
         errorMsg.classList.remove('hidden');
+        codeInput.classList.add('border-red-500');
         codeInput.focus();
+      }
+    });
+
+    // Nasconde l'errore mentre l'utente digita un nuovo codice
+    codeInput.addEventListener('input', () => {
+      if (!errorMsg.classList.contains('hidden')) {
+        errorMsg.classList.add('hidden');
+        codeInput.classList.remove('border-red-500');
       }
     });
 
@@ -520,6 +537,8 @@
     });
     logoutBtn.addEventListener('click', () => {
       codeInput.value = '';
+      errorMsg.classList.add('hidden');
+      codeInput.classList.remove('border-red-500');
       showScreen(screenGate);
     });
 
@@ -556,18 +575,18 @@
             <div class="flex-1 min-w-0">
               <h4 class="font-bold text-xs text-white truncate">Super-Star Limited</h4>
               <div class="flex items-center gap-1.5">
-                <span class="text-[10px] text-neutral-500 line-through">€ ${ORIGINAL_PRICE.toFixed(2)}</span>
+                <span class="text-[10px] text-white/50 line-through">€ ${ORIGINAL_PRICE.toFixed(2)}</span>
                 <span class="text-[11px] text-[#dfba73] font-bold">€ ${DISCOUNT_PRICE.toFixed(2)}</span>
               </div>
             </div>
             
             <div class="flex items-center gap-1.5 bg-[#1f1f1f] border border-neutral-700 px-1 py-0.5 rounded">
-              <button id="btn-decrease" class="text-neutral-400 hover:text-white px-1.5 py-0.5 text-xs font-bold hover:bg-neutral-700 transition" title="Decrease">&minus;</button>
+              <button id="btn-decrease" class="text-white/80 hover:text-white px-1.5 py-0.5 text-xs font-bold hover:bg-neutral-700 transition" title="Decrease">&minus;</button>
               <span class="text-xs font-bold text-white px-1">${cartCount}</span>
-              <button id="btn-increase" class="text-neutral-400 hover:text-white px-1.5 py-0.5 text-xs font-bold hover:bg-neutral-700 transition" title="Increase">&plus;</button>
+              <button id="btn-increase" class="text-white/80 hover:text-white px-1.5 py-0.5 text-xs font-bold hover:bg-neutral-700 transition" title="Increase">&plus;</button>
             </div>
 
-            <button id="btn-remove-item" class="text-neutral-500 hover:text-red-400 p-1 transition" title="Remove from bag">
+            <button id="btn-remove-item" class="text-white/60 hover:text-red-400 p-1 transition" title="Remove from bag">
               <svg class="w-4 h-4 stroke-current" fill="none" viewBox="0 0 24 24" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
               </svg>
@@ -695,11 +714,11 @@
         <div class="flex justify-between items-start mb-2">
           <div>
             <span class="font-bold text-white tracking-wide">${author}</span>
-            <span class="text-[10px] text-neutral-400 ml-2">${model}</span>
+            <span class="text-[10px] text-white/60 ml-2">${model}</span>
           </div>
           <span class="text-[#dfba73] tracking-wider text-sm">${starIcons}</span>
         </div>
-        <p class="text-neutral-300 font-light leading-relaxed">
+        <p class="text-white/90 font-light leading-relaxed">
           "${text}"
         </p>
         <div class="text-[10px] text-[#dfba73] mt-2">Just now • Verified Dreamer ★</div>
