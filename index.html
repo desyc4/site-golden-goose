@@ -80,7 +80,7 @@
           />
 
           <p id="error-msg" class="text-red-400 font-sans-clean text-xs hidden font-semibold tracking-wide bg-red-950/50 border border-red-500/40 py-2 px-3">
-            Codice non valido, riprova.
+            Invalid Code. Please verify your sneaker code and try again.
           </p>
 
           <button 
@@ -514,7 +514,7 @@
         codeInput.classList.remove('border-red-500');
         showScreen(screenDashboard);
       } else {
-        errorMsg.textContent = "Codice non valido, riprova.";
+        errorMsg.textContent = "Invalid Code. Please verify your sneaker code and try again.";
         errorMsg.classList.remove('hidden');
         codeInput.classList.add('border-red-500');
         codeInput.focus();
